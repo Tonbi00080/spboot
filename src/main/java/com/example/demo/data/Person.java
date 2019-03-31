@@ -19,11 +19,11 @@ public class Person {
 	private int id;
 	
 	@Column(length = 50, nullable =false)
-	@NotEmpty
+	@NotEmpty(message="空白は不可です")
 	private String name;
 	
-	@Min(0)
-	@Max(150)
+	@Min(value=0, message="年齢は0以上です")
+	@Max(value=150, message="年齢は150以下です")
 	private Integer age;
 	
 	public int getId() {
