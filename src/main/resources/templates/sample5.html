@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="${msg}"/>
+	<table>
+	<form method="post" action="/sample5" th:object="${formModel}">
+		<ul>
+			<li th:each="error: ${#fields.detailedErrors()}"
+			class ="err" th:text="${error.message}"/>			
+		</ul>
+		<tr>
+			<td>
+				<label for="name">名前</label>
+			</td>
+			<td>
+				<input type="text" name="name" th:field="*{name}">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="age">年齢</label>
+			</td>
+			<td>
+				<input type="text" name="age" th:field="*{age}">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+			<td>
+				<input type="submit"/>
+			</td>
+		</tr>
+	</form>
+	</table>
+
+
+	<table>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+		</tr>
+		<tr th:each="obj:${data}">
+			<td th:text="${obj.id}"></td>
+			<td th:text="${obj.name}"></td>
+			<td th:text="${obj.age}"></td>
+		</tr>
+	</table>
+</body>
+</html>
