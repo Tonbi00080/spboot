@@ -28,7 +28,7 @@ public class PersonListController {
 	/**
 	 * 個人登録API
 	 * @param person
-	 * @return person
+	 * @return ist<Person>
 	 */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
@@ -49,7 +49,7 @@ public class PersonListController {
 	/**
 	 * 個人取得API
 	 * @param id
-	 * @return Person
+	 * @return Optional<Person>
 	 */
 	@GetMapping(path = "{id}")
 	Optional<Person> getPerson(@PathVariable Integer id) {
@@ -60,8 +60,8 @@ public class PersonListController {
 	/**
      * 個人更新API
      * @param id
-     * @param item
-     * @return item
+     * @param person
+     * @return Person
      */
     @PutMapping(path = "{id}")
     Person putPerson(@PathVariable Integer id, @RequestBody Person person) {
