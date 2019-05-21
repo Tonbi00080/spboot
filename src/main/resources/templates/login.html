@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+<form th:action="@{/sign_in}" method="post">
+	<label>メールアドレス</label>
+	<input type="text" name="username">
+	<br/>
+	<label>パスワード</label>
+	<input type="password" name="password">
+	<br/>
+    <input type="submit" value="Login">
+    </form>
+</body>
+</html>
