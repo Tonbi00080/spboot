@@ -18,7 +18,7 @@ public class LogIntercepter implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		logger.info("before handling={}", request.getRequestURI());
+//		logger.info("before handling={}", request.getRequestURI());
 		return true;
 	}
 
@@ -27,13 +27,13 @@ public class LogIntercepter implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		logger.info("before view rendering={}", request.getRequestURI());
+//		logger.info("before view rendering={}", request.getRequestURI());
 	}
 
 	// ビューレンダリング後
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		logger.info("after view rendering={}", request.getRequestURI());
+//		logger.info("after view rendering={}", request.getRequestURI());
 	}
 }
