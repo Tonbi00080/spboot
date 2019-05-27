@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserService userService;
 	
-	// フォームの値を暗号化し、DBの暗号化したパスワードと比較
+	// 暗号化したフォームの値とDBの値を比較（パスワード）
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
@@ -33,9 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login") //ログインページはコントローラを経由しないのでViewNameとの紐付けが必要
-                .loginProcessingUrl("/sign_in") //フォームのSubmitURL、このURLへリクエストが送られると認証処理が実行される
-                .usernameParameter("username") //リクエストパラメータのname属性を明示
+                .loginPage("/login") // ログインのビュー
+                .loginProcessingUrl("/sign_in") //認証処理が実行される
+                .usernameParameter("username") 
                 .passwordParameter("password")
                 .successForwardUrl("/hello")
                 .failureUrl("/login?error")

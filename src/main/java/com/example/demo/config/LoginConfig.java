@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class LoginConfig implements WebMvcConfigurer {
 
     /**
-     * 「/login」というURLからlogin.htmlを呼び出す
+     * URL「/login」にlogin.htmlのビューを割り当てる
      */
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");

@@ -14,9 +14,9 @@ public class LoginUserDao {
 	EntityManager em;
 	
 	/**
-	 * フォームの入力値から該当するユーザを検索 合致するものが無い場合Nullが返される
+	 * フォームの入力値から該当するユーザを検索する.
 	 * @param userName
-	 * @return 一致するユーザが存在するとき:UserEntity、存在しないとき:Null
+	 * @return UserEntity、存在しないとき:Null
 	 */
 	public LoginUser findUser(String userName) {
 		String query = "";

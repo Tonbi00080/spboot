@@ -12,8 +12,8 @@ public class HelloController {
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.POST)
     private String init(Model model) {
+		// HttpSessionに情報格納している
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        //Principalからログインユーザの情報を取得
         String userName = auth.getName();
         model.addAttribute("userName", userName);
         return "hello";
