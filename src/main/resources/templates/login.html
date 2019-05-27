@@ -6,10 +6,10 @@
 </head>
 <body>
     <div th:if="${param.logout}">
-            You have been logged out.
+    	<p th:text="#{logout.done}"/>
     </div>
     <div th:if="${param.error}">
-            Invalid username and password.
+    	<p th:text="#{login.failure}"/>
     </div>
 <form th:action="@{/sign_in}" method="post">
 	<label>メールアドレス</label>
@@ -18,7 +18,7 @@
 	<label>パスワード</label>
 	<input type="password" name="password">
 	<br/>
-    <input type="submit" value="Login">
+    <input type="submit" value="ログイン">
     </form>
 </body>
 </html>
