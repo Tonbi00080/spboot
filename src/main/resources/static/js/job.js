@@ -11,7 +11,7 @@ $(document).ready(function(){
 	}
 });
 
-
+// フォーム初期化
 function clearAll(){
 	document.getElementById('name').value = '';
 	document.getElementById('age').value = '';
@@ -21,7 +21,7 @@ function clearAll(){
 	document.getElementById('jobType').value = '';
 }
 
-// JSONデータを国コードのプルダウンにセットする
+// JSONデータを仕事のプルダウンにセットする
 function setPullDownJobs(data) {
 	var obj = $.parseJSON(data);
 	$('#jobPullDown').html('');
@@ -32,6 +32,7 @@ function setPullDownJobs(data) {
 	}
 }
 
+// 仕事のプルダウン最新化
 function refreshJobs(jobType) {
 	// ajax処理の通知
 	var deferred = new $.Deferred();
@@ -57,6 +58,7 @@ $('#jobTypePullDown').change(function() {
 	refreshJobs(jobType);
 });
 
+// フォーム送信
 function submitPerson() {
 	var jobType = document.getElementById('jobTypeInput').value;
 	document.getElementById('jobType').value = jobType;
