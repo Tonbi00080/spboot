@@ -5,14 +5,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h3>入力完了</h3>
+<a href="/sample5">個人情報入力フォームへ</a>
 	<table>
 		<tr>
-			<th>id</th>
-			<th>name</th>
+			<th>
+				<span id="id" th:text="#{id}"></span>
+			</th>
+			<th>
+				<span id="name" th:text="#{name}"></span>
+			</th>
+			<th>
+				<span id="age" th:text="#{age}"></span>
+			</th>
+			<th>
+				<span id="jobType" th:text="#{jobType}"></span>
+			</th>
+			<th>
+				<span id="job" th:text="#{job}"></span>
+			</th>
 		</tr>
 		<tr th:each="obj:${data}">
 			<td th:text="${obj.id}"></td>
 			<td th:text="${obj.name}"></td>
+			<td th:text="${obj.age}"></td>
+			<td th:text="${obj.jobType}"></td>
+			<td th:text="${obj.job}"></td>
 		</tr>
 	</table>
 </body>

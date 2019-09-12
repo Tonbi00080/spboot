@@ -3,7 +3,8 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.data.Person;
+import com.example.demo.data.LoginUser;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer> {}
+public interface UserRepository extends JpaRepository<LoginUser, Integer> {
+}

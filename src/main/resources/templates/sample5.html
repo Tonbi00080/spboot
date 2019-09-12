@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -7,32 +7,59 @@
 <body>
 	<p th:text="${msg}"/>
 	<table>
-	<form method="post" action="/sample5" th:object="${formModel}">
+	<form method="post" th:action="@{/sample5}" th:object="${formModel}">
 		<tr>
 			<td>
-				<label for="name">名前</label>
+				<spam>*</spam><span id="nameLabel" th:text="#{name}"></span>
 			</td>
 			<td>
 				<input type="text" name="name" th:field="*{name}" th:errorclass="err">
-				<div th:if="${#fields.hasErrors('name')}"
-				th:errors="*{name}" th:errorclass="err"></div>
+				<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="err"></div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<label for="age">年齢</label>
+				<span id="ageLabel" th:text="#{age}"></span>
 			</td>
 			<td>
-				<input type="text" name="age" th:field="*{age}" th:errorclass="err">
-				<div th:if="${#fields.hasErrors('age')}"
-				th:errors="*{age}" th:errorclass="err"></div>
+				<input type="number" name="age" th:field="*{age}" th:errorclass="err">
+				<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" th:errorclass="err"></div>
+			</td>
+		</tr> 
+		<tr>
+			<td>
+				<span id="jobTypeLabel" th:text="#{jobType}"></span>
+			</td>
+			<td>
+				<select id="jobTypePullDown">
+                  <option th:each="eJobTypeMap : *{jobTypeMap}" th:inline="text" th:value="${eJobTypeMap.value}"
+                      th:selected="${eJobTypeMap.value == formModel.jobTypeInput}">[[${eJobTypeMap.value}]]</option>
+                </select>
+                <div th:if="${#fields.hasErrors('jobType')}" th:errors="*{jobType}" th:errorclass="err"></div>
 			</td>
 		</tr>
 		<tr>
 			<td>
+				<span id="jobLabel" th:text="#{job}"></span>
 			</td>
 			<td>
-				<input type="submit"/>
+				<select id="jobPullDown">
+                  <option th:each="eJobMap : *{jobMap}" th:inline="text" th:value="${eJobMap.value}"
+                      th:selected="${eJobMap.value == formModel.jobInput}">[[${eJobMap.value}]]</option>
+                </select>
+                <div th:if="${#fields.hasErrors('job')}" th:errors="*{job}" th:errorclass="err"></div>
+			</td>
+		</tr>
+		<input type="hidden" name="jobType" id="jobType" th:field="*{jobType}"/>
+		<input type="hidden" name="job" id="job" th:field="*{job}"/>
+		<input type="hidden" name="jobTypeInput" id="jobTypeInput" th:field="*{jobTypeInput}"/>
+		<input type="hidden" name="jobInput" id="jobInput" th:field="*{jobInput}"/>
+		<input type="hidden" name="jobJson" id="jobJson" th:field="*{jobJson}"/>
+		<tr>
+			<td>
+			</td>
+			<td>
+				<input type="submit" onclick="submitPerson()"/>
 			</td>
 		</tr>
 	</form>
@@ -41,14 +68,31 @@
 
 	<table>
 		<tr>
-			<th>id</th>
-			<th>name</th>
+			<th>
+				<span id="id" th:text="#{id}"></span>
+			</th>
+			<th>
+				<span id="name" th:text="#{name}"></span>
+			</th>
+			<th>
+				<span id="age" th:text="#{age}"></span>
+			</th>
+			<th>
+				<span id="jobType" th:text="#{jobType}"></span>
+			</th>
+			<th>
+				<span id="job" th:text="#{job}"></span>
+			</th>
 		</tr>
 		<tr th:each="obj:${data}">
 			<td th:text="${obj.id}"></td>
 			<td th:text="${obj.name}"></td>
 			<td th:text="${obj.age}"></td>
+			<td th:text="${obj.jobType}"></td>
+			<td th:text="${obj.job}"></td>
 		</tr>
 	</table>
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/job.js}"></script>
 </body>
 </html>

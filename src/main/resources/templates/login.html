@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+    <div th:if="${param.logout}">
+    	<p th:text="#{logout.done}"/>
+    </div>
+    <div th:if="${param.error}">
+    	<p th:text="#{login.failure}"/>
+    </div>
+<form th:action="@{/sign_in}" method="post">
+	<label>メールアドレス</label>
+	<input type="text" name="username">
+	<br/>
+	<label>パスワード</label>
+	<input type="password" name="password">
+	<br/>
+    <input type="submit" value="ログイン">
+    </form>
+</body>
+</html>
